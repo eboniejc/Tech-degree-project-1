@@ -1,6 +1,6 @@
 
 /*** 
- * `quotes` array 
+ * `quotes` array (array of objects)
 ***/
 const quotes = [
   {
@@ -47,6 +47,11 @@ function getRandomQuote() {
 }
 //  console.log(getRandomQuote());
 
+//random color function
+function getRandomColor() {
+  return `#${Math.floor(Math.random() * 0xFFFFFF).toString(16)}`;
+}
+
 
 /***
  * `printQuote` function
@@ -72,12 +77,19 @@ function printQuote() {
   }
   //close
   htmlString += `</p>`;
-  //idk what this is?
+
+
+  //applies background color change
+  document.body.style.backgroundColor = getRandomColor();
+
+
   document.getElementById('quote-box').innerHTML = htmlString;
 
 }
 printQuote();
 
+// Set refresh every 15 seconds (15000 milliseconds)
+setInterval(printQuote, 15000);
 
 /***
  * click event listener for the print quote button
